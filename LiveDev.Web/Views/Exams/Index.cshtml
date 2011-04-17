@@ -1,0 +1,38 @@
+﻿@model IEnumerable<LiveDev.Web.Models.ViewQuestion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            TextQuestion
+        </th>
+        <th>
+            SourceCode
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Resolve", "Resolve", new { id=item.Id })
+        </td>
+        <td>
+            @item.TextQuestion
+        </td>
+        <td>
+            @item.SourceCode
+        </td>
+    </tr>
+}
+
+</table>
+

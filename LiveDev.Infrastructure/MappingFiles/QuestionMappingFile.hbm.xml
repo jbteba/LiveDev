@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="LiveDev.Domain.Question,LiveDev.Domain" lazy="true" table="Questions">
+    <id name="Id" column="ID">
+      <generator class="increment" />
+    </id>
+    <property name="TextQuestion" column="TEXT_QUESTION"/>
+    <component name="ContractDefinition">
+      <property name="ClassName" column="TEST_CLASS_NAME"/>
+      <property name="MethodName" column="METHOD_NAME"/>
+      <property name="ReturnValue" column="RETURN_VALUE"/>
+    </component>
+  </class>
+</hibernate-mapping>
