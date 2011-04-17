@@ -210,7 +210,7 @@ namespace LiveDev.Tests.Controllers
         }
 
         [TestMethod]
-        public void ResolvePost_WhenSourceCodeIsExecuted_ErrorListIsEmpty()
+        public void ResolvePost_WhenSourceCodeIsExecuted_ErrorListIsNull()
         {
             var mockCorrectionProcess = MockRepository.GenerateStub<CorrectionProcess>();
             var stubCorrectionResult = MockRepository.GenerateStub<CorrectionResult>();
@@ -220,11 +220,7 @@ namespace LiveDev.Tests.Controllers
             var controller = new ExamsController(null, mockCorrectionProcess, stubViewQuestionMapper);
             var result = controller.Resolve(null) as ViewResult;
 
-            Assert.AreEqual(0, result.ViewBag.Errors.Count);
+            Assert.IsNull(result.ViewBag.Errors);
         }
-    }
-
-    public class Date
-    {
     }
 }

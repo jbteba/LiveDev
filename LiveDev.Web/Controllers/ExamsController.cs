@@ -52,7 +52,6 @@ namespace LiveDev.Web.Controllers
             else
             {
                 ViewBag.Result = correctionResult.Result;
-                ViewBag.Errors = new List<string>();
             }
             return View(viewQuestion);
         }
