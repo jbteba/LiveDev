@@ -75,7 +75,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Views\Exams\CompilationErrorsPresenterHelper.cs" />
     <Compile Include="Helpers\Views\MvcLinkHelper.cs" />
     <Compile Include="Models\ViewQuestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

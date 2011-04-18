@@ -310,6 +310,18 @@ div#title
     color: #ff0000;
 }
 
+div .validation-summary-errors
+{
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('Images/error.png');
+}
+
 .validation-summary-valid
 {
     display: none;
@@ -353,7 +365,7 @@ div#title
 /* Different kind of box messages to the user
 ----------------------------------------------------------*/
 
-.infoBox, .successBox, .warningBox, .errorBox, .validationBox 
+.infoBox, .successBox, .warningBox, .errorBox, .validationBox
 {
     border: 1px solid;
     margin: 10px 0px;
@@ -383,7 +395,7 @@ div#title
     background-image: url('Images/warning.png');
 }
 
-.errorBox 
+.errorBox
 {
     color: #D8000C;
     background-color: #FFBABA;

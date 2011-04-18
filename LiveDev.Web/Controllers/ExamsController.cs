@@ -46,8 +46,10 @@ namespace LiveDev.Web.Controllers
             var correctionResult = _correctionProcess.CheckAnswer(questionWithAnswer);
             if (correctionResult.HasErrors())
             {
-                ViewBag.Errors = correctionResult.Errors;
-                ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                foreach (var error in correctionResult.Errors)
+                {
+                    ModelState.AddModelError("", error);    
+                }
             }
             else
             {

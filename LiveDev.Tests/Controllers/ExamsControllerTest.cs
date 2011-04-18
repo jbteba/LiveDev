@@ -188,10 +188,9 @@ namespace LiveDev.Tests.Controllers
             var stubViewQuestionMapper = MockRepository.GenerateStub<ViewQuestionMapper>();
 
             var controller = new ExamsController(null, mockCorrectionProcess, stubViewQuestionMapper);
-            var result = controller.Resolve(null) as ViewResult;
-
-            Assert.AreEqual("Error1", result.ViewBag.Errors[0]);
-            Assert.AreEqual("Error2", result.ViewBag.Errors[1]);
+            controller.Resolve(null);
+            Assert.AreEqual("Error1", controller.ModelState[""].Errors[0].ErrorMessage);
+            Assert.AreEqual("Error2", controller.ModelState[""].Errors[1].ErrorMessage);
         }
 
         [TestMethod]
