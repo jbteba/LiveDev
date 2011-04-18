@@ -33,7 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AtentoFramework2008.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="AtentoFramework2008.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\AtentoFramework2008\AtentoFramework2008.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\libraries\NHibernate\log4net.dll</HintPath>
     </Reference>
@@ -156,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Exams\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Exams\Result.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

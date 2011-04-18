@@ -195,32 +195,29 @@ namespace LiveDev.Tests.Controllers
         }
 
         [TestMethod]
-        public void ResolvePost_WhenSourceCodeIsExecuted_ShowsTheResult()
+        public void ResolvePost_WhenThereAreNoErrors_ReturnsRedirectOnSuccess()
         {
-            var mockCorrectionProcess = MockRepository.GenerateStub<CorrectionProcess>();
+            var stubCorrectionProcess = MockRepository.GenerateStub<CorrectionProcess>();
             var stubCorrectionResult = MockRepository.GenerateStub<CorrectionResult>();
-            stubCorrectionResult.Result = "1";
-            mockCorrectionProcess.Stub(s => s.CheckAnswer(Arg<Question>.Is.Anything)).Return(stubCorrectionResult);
+            stubCorrectionProcess.Stub(s => s.CheckAnswer(Arg<Question>.Is.Anything)).Return(stubCorrectionResult);
             var stubViewQuestionMapper = MockRepository.GenerateStub<ViewQuestionMapper>();
 
-            var controller = new ExamsController(null, mockCorrectionProcess, stubViewQuestionMapper);
-            var result = controller.Resolve(null) as ViewResult;
+            var controller = new ExamsController(null, stubCorrectionProcess, stubViewQuestionMapper);
+            ActionResult result = controller.Resolve(null);
 
-            Assert.AreEqual("1", result.ViewBag.Result);
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+            var redirectResult = (RedirectToRouteResult)result;
+            Assert.AreEqual("Result", redirectResult.RouteValues["action"]);
         }
 
         [TestMethod]
-        public void ResolvePost_WhenSourceCodeIsExecuted_ErrorListIsNull()
+        public void Result_ReturnsAView()
         {
-            var mockCorrectionProcess = MockRepository.GenerateStub<CorrectionProcess>();
-            var stubCorrectionResult = MockRepository.GenerateStub<CorrectionResult>();
-            mockCorrectionProcess.Stub(s => s.CheckAnswer(Arg<Question>.Is.Anything)).Return(stubCorrectionResult);
-            var stubViewQuestionMapper = MockRepository.GenerateStub<ViewQuestionMapper>();
+            var controller = new ExamsController();
 
-            var controller = new ExamsController(null, mockCorrectionProcess, stubViewQuestionMapper);
-            var result = controller.Resolve(null) as ViewResult;
+            var result = controller.Result() as ViewResult;
 
-            Assert.IsNull(result.ViewBag.Errors);
+            Assert.IsNotNull(result);
         }
     }
 }

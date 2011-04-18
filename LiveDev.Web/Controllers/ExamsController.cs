@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using LiveDev.Domain;
 using LiveDev.Infrastructure.Processes;
 using LiveDev.Infrastructure.Repositories;
@@ -48,12 +47,18 @@ namespace LiveDev.Web.Controllers
             if (correctionResult.HasErrors())
             {
                 ViewBag.Errors = correctionResult.Errors;
+                ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
             }
             else
             {
-                ViewBag.Result = correctionResult.Result;
+                return RedirectToAction("Result");
             }
             return View(viewQuestion);
+        }
+
+        public ActionResult Result()
+        {
+            return View();
         }
 
         public ActionResult Create()
